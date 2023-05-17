@@ -2,10 +2,11 @@ import os
 
 from selene.support.shared import browser
 from selene import be, have, command
+from user_data import User
 
 
 class RegistrationPage:
-    def page_open(self):
+    def open_registration_form(self):
         browser.open("/automation-practice-form")
 
     def page_set_up(self):
@@ -47,7 +48,9 @@ class RegistrationPage:
         )
 
     def upload_pictire(self):
-        browser.element("#uploadPicture").send_keys(os.getcwd() + "/resources/example.png")
+        browser.element("#uploadPicture").send_keys(
+            os.getcwd() + "/resources/example.png"
+        )
 
     def type_address(self, value):
         browser.element("#currentAddress").should(be.blank).type(value)
@@ -62,6 +65,22 @@ class RegistrationPage:
     def choose_city(self):
         browser.element("#city").should(be.clickable).click()
         browser.element('//div[text()="Delhi"]').should(be.clickable).click()
+
+    def fill_registration_form(self, User):
+        self.open_registration_form()
+        self.page_set_up()
+        self.type_first_name(User.first_name)
+        self.type_last_name(User.last_name)
+        self.type_email(User.email)
+        self.choose_gender()
+        self.type_phone_number(User.phone_number)
+        self.input_date_of_birth()
+        self.type_subjects(User.subject)
+        self.choose_hobbies()
+        self.upload_pictire()
+        self.type_address(User.current_address)
+        self.choose_state()
+        self.choose_city()
 
     def click_submit_button(self):
         browser.element("#submit").submit()
