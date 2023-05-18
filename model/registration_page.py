@@ -57,8 +57,9 @@ class RegistrationPage:
         return self
 
     def upload_file(self):
-        os.chdir(f'{os.getcwd()}\\resources')
-        browser.element("#uploadPicture").type(os.getcwd() + '\example.png')
+        browser.element("#uploadPicture").type(
+            os.getcwd() + r'\test\resources\example.png'
+        )
         return self
 
     def type_address(self, value):
