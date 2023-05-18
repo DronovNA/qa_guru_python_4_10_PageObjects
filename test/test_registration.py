@@ -14,7 +14,7 @@ def test_fill_and_submit_form(browser_options):
     registration_page.input_date_of_birth()
     registration_page.type_subjects('sci')
     registration_page.choose_hobbies()
-    registration_page.upload_pictire()
+    registration_page.upload_file()
     registration_page.type_address('Test test test')
     registration_page.choose_state()
     registration_page.choose_city()
