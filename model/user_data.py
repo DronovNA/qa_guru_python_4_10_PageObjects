@@ -13,7 +13,7 @@ class User:
     birth_day: str
     subject: str
     hobby: str
-    upload_filename: str
+    upload_picture: str
     current_address: str
     state: str
     city: str
